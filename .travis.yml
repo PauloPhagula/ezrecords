@@ -13,7 +13,7 @@ before_script:
   - psql -c 'CREATE DATABASE test;' -U postgres
 script:
   - python -m unittest discover -s tests
-  - coverage run --source=ezrecords
+  - coverage run --source=ezrecords -m unittest discover -s tests
 after_sucess: coveralls
 
 
