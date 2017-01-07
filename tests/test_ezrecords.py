@@ -16,9 +16,14 @@ class MySQLDbTests(unittest.TestCase):
         dsn = os.getenv('DATABASE_URL', "mysql+pymysql://root@127.0.0.1:3306/test")
         logger = logging.getLogger()
         self.db = MySQLDb(db_url=dsn, logger=logger)
+
         self.db.save_queries = True
         self.db.show_sql = True
         self.db.show_errors = True
+
+        drop_table = """DROP TABLE IF EXISTS test_user"""
+        self.db.query(drop_table)
+
         create_table = """
 CREATE TABLE test_user (
     id INT AUTO_INCREMENT NOT NULL,
@@ -27,7 +32,7 @@ CREATE TABLE test_user (
     created_at TIMESTAMP,
     created_at_gmt TIMESTAMP,
     PRIMARY KEY(id)
-)
+) CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
         """
         self.db.query(create_table)
 
@@ -81,7 +86,7 @@ CREATE TABLE numbers(
         create_sql = """
 DROP TABLE IF EXISTS poo;
 
-CREATE TABLE poo(contents varchar(191));
+CREATE TABLE poo(contents varchar(191)) CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO poo(contents) VALUES ('big ol pile of 💩');
         """
@@ -196,6 +201,9 @@ class PostgresDbTests(unittest.TestCase):
         dsn = os.getenv('DATABASE_URL', "postgres://postgres@127.0.0.1:5432/test")
         logger = logging.getLogger()
         self.db = PostgresDb(db_url=dsn, logger=logger)
+
+        drop_table = """DROP TABLE IF EXISTS test_user"""
+        self.db.query(drop_table)
 
         create_table = """
 CREATE TABLE test_user (
