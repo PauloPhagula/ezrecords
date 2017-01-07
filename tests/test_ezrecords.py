@@ -27,8 +27,8 @@ class MySQLDbTests(unittest.TestCase):
         create_table = """
 CREATE TABLE test_user (
     id INT AUTO_INCREMENT NOT NULL,
-    username varchar(255) UNIQUE,
-    password varchar(255),
+    username varchar(191) UNIQUE,
+    password varchar(191),
     created_at TIMESTAMP,
     created_at_gmt TIMESTAMP,
     PRIMARY KEY(id)
@@ -37,7 +37,7 @@ CREATE TABLE test_user (
         self.db.query(create_table)
 
     def tearDown(self):
-        drop_table = """DROP TABLE test_user"""
+        drop_table = """DROP TABLE IF EXISTS test_user"""
         self.db.query(drop_table)
         self.db.close()
 
@@ -218,7 +218,7 @@ CREATE TABLE test_user (
         self.db.query(create_table)
 
     def tearDown(self):
-        drop_table = """DROP TABLE test_user"""
+        drop_table = """DROP TABLE IF EXISTS test_user"""
         self.db.query(drop_table)
         self.db.close()
 
