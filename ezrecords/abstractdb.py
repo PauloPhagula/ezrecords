@@ -270,7 +270,8 @@ class Database(object):
 
         cursor.close()
 
-        # return rv  # before adding records
+        if rv is None:
+            return
 
         # Row-by-row Record generator.
 
