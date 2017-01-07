@@ -1,0 +1,113 @@
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# NetBeans project folder
+nbproject
+
+*.sw[po]
+*.un~
+*.*~
+dump.rdb
+.foreverignore
+.*.gz
+
+# Python byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+__pycache__
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+
+# translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# PyCharm
+.idea/
+
+# Flask instance folder
+instance/
+
+#temp files
+temp_cache*.xml
+temp_cache*.html
+
+#sqlite
+*.db
+
+# dotenv
+**/.env
+**/.env.*
+**/env.ini
+!**/.env.example
+!**/env.ini.example
+**/env
+**/lib
+
+# virtualenv
+venv/
+
+# Google App Engine generated folder
+appengine-generated/
+
+# With version 1.8.2 of git, you can also use the ** wildcard to match any level of subdirectories:
+**/vendor
+**/bower_components
+**/node_modules

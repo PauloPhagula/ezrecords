@@ -1,0 +1,35 @@
+# This file is for unifying the coding style for different editors and IDEs
+# @see http://editorconfig.org
+
+# This is the top-most .editconfig file; do not search in parent directories
+root = true
+
+# Default settings:
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+max_line_length = 80
+
+[{*.txt}]
+end_of_line = crlf
+
+[*.sh]
+end_of_line = lf
+
+[*.{cmd, bat}]
+end_of_line = crlf
+
+[*.md, *.diff]
+trim_trailing_whitespace = false
+
+[{*.json, *.yml, *.xml, *.eslintrc, *.csslintrc, *.html}]
+indent_style = space
+indent_size = 2
+
+[*.sql, *.sh]
+max_line_length =
