@@ -1,4 +1,4 @@
-# ezrecords - SQL for the enhanced
+# ezrecords - SQL for the enhanced [![Build Status](https://travis-ci.org/dareenzo/ezrecords.svg?branch=master)](https://travis-ci.org/dareenzo/ezrecords) [![Coverage Status](https://coveralls.io/repos/github/dareenzo/ezrecords/badge.svg?branch=master)](https://coveralls.io/github/dareenzo/ezrecords?branch=master)
 
 ## What?
 
