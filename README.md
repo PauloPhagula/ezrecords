@@ -19,7 +19,7 @@ Database support includes Postgres, MySQL.
 - Records is awesome
 - ezsql/wpdb is good and I'm used to it's API, so it makes for an easy transition from PHP to Python
 - Our love for crafting well written and performant SQL queries is not questionable, but I think a few helpers for some basic DML and recurring queries would help
-- "ORM takes two great ideas and destroys them both.", said a very wise man. So as long as possible I want to keep away from sqlalchemy or the like.
+- "The ORM takes two brilliant ideas and incapacitates them both.", said a very wise man. So as long as possible I want to keep away from sqlalchemy or the like.
 
 ## Usage
 
