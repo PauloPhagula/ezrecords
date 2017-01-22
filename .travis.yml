@@ -14,6 +14,6 @@ before_script:
 script:
   - python -m unittest discover -s tests
   - coverage run --source=ezrecords -m unittest discover -s tests
-after_sucess: coveralls
+after_success: coveralls
 
 
