@@ -25,7 +25,7 @@ def file_get_contents(filename):
 
 SETUP_DIR = os.path.abspath(os.path.dirname(__file__))
 AUTHOR, AUTHOR_EMAIL = parseaddr(ezrecords.__author__)
-LONG_DESCRIPTION = '\n'.join([file_get_contents('README.md'), file_get_contents('CHANGELOG.md')])
+LONG_DESCRIPTION = '\n'.join([file_get_contents('README.rst'), file_get_contents('CHANGELOG.md')])
 
 setup(
     name='ezrecords',
