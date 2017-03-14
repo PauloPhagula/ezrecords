@@ -11,11 +11,3 @@ Welcome to ezrecords's documentation!
    :caption: Contents:
 
    readme
-   code
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
