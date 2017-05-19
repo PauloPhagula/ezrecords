@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -29,11 +29,10 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -42,7 +41,7 @@
           <div class="body" role="main">
             
   <div class="section" id="welcome-to-ezrecords-s-documentation">
-<h1>Welcome to ezrecords&#8217;s documentation!<a class="headerlink" href="#welcome-to-ezrecords-s-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>Welcome to ezrecords’s documentation!<a class="headerlink" href="#welcome-to-ezrecords-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <span id="document-readme"></span><div class="section" id="ezrecords-sql-for-humans-enhanced">
 <h2>ezrecords: SQL for Humans™ Enhanced<a class="headerlink" href="#ezrecords-sql-for-humans-enhanced" title="Permalink to this headline">¶</a></h2>
@@ -52,7 +51,7 @@
 <a class="reference external image-reference" href="https://github.com/dareenzo/ezrecords/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/dareenzo/ezrecords.svg" /></a>
 <p><strong>ezrecords is a very simple, but powerful, library for making raw SQL
 queries to most relational databases.</strong></p>
-<p>ezrecords = Kenneth Reitz&#8217;s <a class="reference external" href="https://github.com/kennethreitz/records">records</a> + Justin Vincent&#8217;s <a class="reference external" href="https://github.com/ezSQL/ezSQL">ezsql</a> + WordPress&#8217; <a class="reference external" href="https://codex.wordpress.org/Class_Reference/wpdb">wpdb</a> - <a class="reference external" href="http://www.sqlalchemy.org">SQLAlchemy</a>.</p>
+<p>ezrecords = Kenneth Reitz’s <a class="reference external" href="https://github.com/kennethreitz/records">records</a> + Justin Vincent’s <a class="reference external" href="https://github.com/ezSQL/ezSQL">ezsql</a> + WordPress’ <a class="reference external" href="https://codex.wordpress.org/Class_Reference/wpdb">wpdb</a> - <a class="reference external" href="http://www.sqlalchemy.org">SQLAlchemy</a>.</p>
 <p>Just write SQL. No bells, no whistles. This common task can be
 surprisingly difficult with the standard tools available.
 This library strives to make this workflow as simple as possible,
@@ -64,7 +63,7 @@ while providing an elegant interface to work with your query results.</p>
 <li><a class="reference external" href="https://github.com/kennethreitz/records">records</a> is awesome</li>
 <li><a class="reference external" href="https://github.com/ezSQL/ezSQL">ezsql</a> and <a class="reference external" href="https://codex.wordpress.org/Class_Reference/wpdb">wpdb</a> have very nice API, so it makes for an easy transition from PHP to Python</li>
 <li>Our love for crafting well written and performant SQL queries is not questionable, but I think a few helpers for some basic DML and recurring queries would help</li>
-<li><em>&#8220;The ORM takes two brilliant ideas and incapacitates them both.&#8221;</em>,
+<li><em>“The ORM takes two brilliant ideas and incapacitates them both.”</em>,
 said a very wise man. So, as long as possible I want to keep away from
 sqlalchemy or the like.</li>
 </ul>
@@ -73,107 +72,111 @@ sqlalchemy or the like.</li>
 <h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="api">
 <h4>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h4>
-<div class="code Python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<div class="code Python highlight-default"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">ezrecords.mysqldb</span> <span class="k">import</span> <span class="n">MySQLDb</span>
 
-<span class="c1"># connect</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">MySQLDb</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;mysql://root:passwd@127.0.0.1:3306/test&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span> <span class="c1"># logger is optional</span>
 
-<span class="c1"># enable debugging - optional</span>
-<span class="n">db</span><span class="o">.</span><span class="n">save_queries</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># save queries and execution time</span>
-<span class="n">db</span><span class="o">.</span><span class="n">show_sql</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># show SQL code being executed</span>
-<span class="n">db</span><span class="o">.</span><span class="n">show_errors</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># show errors</span>
+<span class="c"># connect</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">MySQLDb</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s">&quot;mysql://root:passwd@127.0.0.1:3306/test&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span> <span class="c"># logger is optional</span>
 
-<span class="n">create_user_table</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">CREATE TABLE test_user (</span>
-<span class="s2">    id INT AUTO_INCREMENT NOT NULL,</span>
-<span class="s2">    username varchar(255) UNIQUE,</span>
-<span class="s2">    password varchar(255),</span>
-<span class="s2">    created_at TIMESTAMP,</span>
-<span class="s2">    created_at_gmt TIMESTAMP,</span>
-<span class="s2">    PRIMARY KEY(id)</span>
-<span class="s2">)</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">create_table</span><span class="p">)</span> <span class="c1"># run generic SQL</span>
+<span class="c"># enable debugging - optional</span>
+<span class="n">db</span><span class="o">.</span><span class="n">save_queries</span> <span class="o">=</span> <span class="k">True</span>  <span class="c"># save queries and execution time</span>
+<span class="n">db</span><span class="o">.</span><span class="n">show_sql</span> <span class="o">=</span> <span class="k">True</span>  <span class="c"># show SQL code being executed. logger above is required for logging to work</span>
+<span class="n">db</span><span class="o">.</span><span class="n">show_errors</span> <span class="o">=</span> <span class="k">True</span>  <span class="c"># show errors</span>
 
-<span class="n">create_numbers_table</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">DROP TABLE IF EXISTS numbers;</span>
-<span class="s2">CREATE TABLE numbers(</span>
-<span class="s2">    ints int,</span>
-<span class="s2">    floats float</span>
-<span class="s2">);</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">create_user_table</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">CREATE TABLE test_user (</span>
+<span class="s">    id INT AUTO_INCREMENT NOT NULL,</span>
+<span class="s">    username varchar(255) UNIQUE,</span>
+<span class="s">    password varchar(255),</span>
+<span class="s">    created_at TIMESTAMP,</span>
+<span class="s">    created_at_gmt TIMESTAMP,</span>
+<span class="s">    PRIMARY KEY(id)</span>
+<span class="s">)</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">create_table</span><span class="p">)</span> <span class="c"># run generic SQL</span>
+
+<span class="n">create_numbers_table</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">DROP TABLE IF EXISTS numbers;</span>
+<span class="s">CREATE TABLE numbers(</span>
+<span class="s">    ints int,</span>
+<span class="s">    floats float</span>
+<span class="s">);</span>
+<span class="s">&quot;&quot;&quot;</span>
 <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">create_table_sql</span><span class="p">)</span>
 
-<span class="n">insert_numbers_sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO numbers (ints, floats) VALUES (</span><span class="si">%d</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)&quot;</span> <span class="c1"># DB API only accepts %s, so we replace %d and %f by %s internally</span>
-<span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">insert_numbers_sql</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">)</span> <span class="c1"># run generic queries with params</span>
+<span class="n">insert_numbers_sql</span> <span class="o">=</span> <span class="s">&quot;INSERT INTO numbers (ints, floats) VALUES (%d, %f)&quot;</span> <span class="c"># DB API only accepts %s, so we replace %d and %f by %s internally</span>
+<span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">insert_numbers_sql</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">)</span> <span class="c"># run generic queries with params</span>
 
-<span class="c1"># insert records</span>
-<span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;test_user&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;scott&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;tiger&#39;</span><span class="p">,</span> <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
-<span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;test_user&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;JONES&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;STEEL&#39;</span><span class="p">})</span>
+<span class="c"># insert records</span>
+<span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;test_user&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s">&#39;scott&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">&#39;tiger&#39;</span><span class="p">,</span> <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+<span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;test_user&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;JONES&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">:</span> <span class="s">&#39;STEEL&#39;</span><span class="p">})</span>
 
-<span class="c1"># Update records</span>
-<span class="n">db</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;test_user&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;shepard&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;scott&#39;</span><span class="p">})</span>
+<span class="c"># bulk_insert records</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">bulk_insert</span><span class="p">(</span><span class="s">&#39;test_user&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">),</span> <span class="p">[(</span><span class="s">&#39;scott&#39;</span><span class="p">,</span> <span class="s">&#39;tiger&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;JONES&#39;</span><span class="p">,</span> <span class="s">&#39;STEEL&#39;</span><span class="p">)])</span>
 
-<span class="c1"># Delete records</span>
-<span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;test_user&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span> <span class="c1"># None is converted to NULL</span>
+<span class="c"># Update records</span>
+<span class="n">db</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s">&#39;test_user&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;password&#39;</span><span class="p">:</span> <span class="s">&#39;shepard&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;scott&#39;</span><span class="p">})</span>
 
-<span class="c1"># Sanitize query</span>
-<span class="n">db</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO postmeta (post_id, meta_key, meta_value) VALUES ( &#39;</span><span class="si">%d</span><span class="s2">&#39;, &quot;</span><span class="si">%s</span><span class="s2">&quot;, </span><span class="si">%%</span><span class="s2">s )&#39;)&quot;&quot;&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Harriet&#39;s Adages&quot;</span><span class="p">,</span> <span class="s2">&quot;WordPress&#39; database interface is like Sunday Morning: Easy.&quot;</span><span class="p">)</span>
+<span class="c"># Delete records</span>
+<span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">&#39;test_user&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="k">None</span><span class="p">})</span> <span class="c"># None is converted to NULL</span>
 
-<span class="c1"># Call stored procedures</span>
-<span class="n">db</span><span class="o">.</span><span class="n">call_procedure</span><span class="p">(</span><span class="s1">&#39;adds&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c"># Sanitize query</span>
+<span class="n">db</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="s">&quot;&quot;&quot;INSERT INTO postmeta (post_id, meta_key, meta_value) VALUES ( &#39;%d&#39;, &quot;%s&quot;, %%s )&#39;)&quot;&quot;&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;Harriet&#39;s Adages&quot;</span><span class="p">,</span> <span class="s">&quot;WordPress&#39; database interface is like Sunday Morning: Easy.&quot;</span><span class="p">)</span>
 
-<span class="c1"># Get single variable/value</span>
-<span class="n">db</span><span class="o">.</span><span class="n">get_var</span><span class="p">(</span><span class="s1">&#39;SELECT version()&#39;</span><span class="p">)</span>
+<span class="c"># Call stored procedures</span>
+<span class="n">db</span><span class="o">.</span><span class="n">call_procedure</span><span class="p">(</span><span class="s">&#39;adds&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># Get specific row from many results</span>
-<span class="n">get_row</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM test_user&#39;</span><span class="p">,</span> <span class="n">row_offset</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># if offset not given the first row is returned</span>
+<span class="c"># Get single variable/value</span>
+<span class="n">db</span><span class="o">.</span><span class="n">get_var</span><span class="p">(</span><span class="s">&#39;SELECT version()&#39;</span><span class="p">)</span>
 
-<span class="c1"># Get specific column from many results</span>
-<span class="n">db</span><span class="o">.</span><span class="n">get_col</span><span class="p">(</span><span class="s1">&#39;SELECT username, password FROM test_user&#39;</span><span class="p">,</span> <span class="n">column_offset</span><span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>  <span class="c1"># offset can be numeric too</span>
+<span class="c"># Get specific row from many results</span>
+<span class="n">db</span><span class="o">.</span><span class="n">get_row</span><span class="p">(</span><span class="s">&#39;SELECT * FROM test_user&#39;</span><span class="p">,</span> <span class="n">row_offset</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c"># if offset not given the first row is returned</span>
 
-<span class="c1"># Get results in specific format</span>
-<span class="n">db</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="s1">&#39;SELECT username, password FROM test_user&#39;</span><span class="p">,</span> <span class="s1">&#39;json&#39;</span><span class="p">)</span>
-<span class="c1"># Get last inserted ID from AUTO_INCREMENT/SERIAL fields</span>
-<span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;test_user&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;scott&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;tiger&#39;</span><span class="p">,</span> <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+<span class="c"># Get specific column from many results</span>
+<span class="n">db</span><span class="o">.</span><span class="n">get_col</span><span class="p">(</span><span class="s">&#39;SELECT username, password FROM test_user&#39;</span><span class="p">,</span> <span class="n">column_offset</span><span class="o">=</span><span class="s">&#39;password&#39;</span><span class="p">)</span>  <span class="c"># offset can be numeric too</span>
+
+<span class="c"># Get results in specific format</span>
+<span class="n">db</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="s">&#39;SELECT username, password FROM test_user&#39;</span><span class="p">,</span> <span class="s">&#39;json&#39;</span><span class="p">)</span>
+<span class="c"># Get last inserted ID from AUTO_INCREMENT/SERIAL fields</span>
+<span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;test_user&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s">&#39;scott&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">&#39;tiger&#39;</span><span class="p">,</span> <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
 <span class="n">db</span><span class="o">.</span><span class="n">last_insert_id</span>
 
-<span class="c1"># Get number of affected rows from previus query</span>
-<span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;test_user&#39;</span><span class="p">)</span>
+<span class="c"># Get number of affected rows from previus query</span>
+<span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">&#39;test_user&#39;</span><span class="p">)</span>
 <span class="n">db</span><span class="o">.</span><span class="n">affected_rows</span>
 
-<span class="c1"># Switch to another database</span>
-<span class="n">db</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;information_schema&#39;</span><span class="p">)</span>
+<span class="c"># Switch to another database</span>
+<span class="n">db</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">&#39;information_schema&#39;</span><span class="p">)</span>
 
-<span class="c1"># Check query timing</span>
-<span class="c1"># execute long running query</span>
+<span class="c"># Check query timing</span>
+<span class="c"># execute long running query</span>
 <span class="n">db</span><span class="o">.</span><span class="n">last_query_elapsed_time</span>
 
-<span class="c1"># Transactions</span>
-<span class="c1"># ---</span>
+<span class="c"># Transactions</span>
+<span class="c"># ---</span>
 <span class="n">db</span><span class="o">.</span><span class="n">begin_transaction</span><span class="p">()</span>
-<span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span> <span class="c1"># or db.rollback()</span>
+<span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span> <span class="c"># or db.rollback()</span>
 
-<span class="c1"># Data export</span>
-<span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM table&#39;</span><span class="p">)</span>
+<span class="c"># Data export</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">&#39;SELECT * FROM table&#39;</span><span class="p">)</span>
 <span class="n">rows</span><span class="o">.</span><span class="n">dataset</span>
-<span class="n">rows</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">)</span> <span class="c1"># yaml, json, xls, xlsx</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s">&#39;csv&#39;</span><span class="p">)</span> <span class="c"># yaml, json, xls, xlsx</span>
 
-<span class="c1"># Goodies</span>
-<span class="n">db</span><span class="o">.</span><span class="n">db_version</span><span class="p">()</span> <span class="c1"># get server version</span>
-<span class="n">db</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span> <span class="c1"># check if table exists</span>
-<span class="n">db</span><span class="o">.</span><span class="n">get_table_names</span><span class="p">()</span> <span class="c1"># get list of tables in database</span>
-<span class="n">db</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span> <span class="c1"># clear cache results</span>
+<span class="c"># Goodies</span>
+<span class="n">db</span><span class="o">.</span><span class="n">db_version</span><span class="p">()</span> <span class="c"># get server version</span>
+<span class="n">db</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;table&#39;</span><span class="p">)</span> <span class="c"># check if table exists</span>
+<span class="n">db</span><span class="o">.</span><span class="n">get_table_names</span><span class="p">()</span> <span class="c"># get list of tables in database</span>
+<span class="n">db</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span> <span class="c"># clear cache results</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="cli">
 <h4>CLI<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h4>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">ezrecords</span> <span class="o">-</span><span class="n">h</span>
-<span class="n">ezrecords</span> <span class="s2">&quot;SELECT version() AS version&quot;</span> <span class="s2">&quot;json&quot;</span> <span class="o">--</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;mysql://root:passwd@127.0.0.1:3306/test&quot;</span>
-<span class="n">ezrecords</span> <span class="s2">&quot;SELECT version() AS version&quot;</span> <span class="s2">&quot;json&quot;</span> <span class="o">--</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;postgres://postgres:passwd@127.0.0.1:5432/test&quot;</span>
+<div class="code bash highlight-default"><div class="highlight"><pre><span class="n">ezrecords</span> <span class="o">-</span><span class="n">h</span>
+<span class="n">ezrecords</span> <span class="s">&quot;SELECT version() AS version&quot;</span> <span class="s">&quot;json&quot;</span> <span class="o">--</span><span class="n">url</span><span class="o">=</span><span class="s">&quot;mysql://root:passwd@127.0.0.1:3306/test&quot;</span>
+<span class="n">ezrecords</span> <span class="s">&quot;SELECT version() AS version&quot;</span> <span class="s">&quot;json&quot;</span> <span class="o">--</span><span class="n">url</span><span class="o">=</span><span class="s">&quot;postgres://postgres:passwd@127.0.0.1:5432/test&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -181,7 +184,7 @@ sqlalchemy or the like.</li>
 <div class="section" id="thank-you">
 <h3>Thank you<a class="headerlink" href="#thank-you" title="Permalink to this headline">¶</a></h3>
 <p>Thanks for checking this library out! I hope you find it useful.</p>
-<p>Of course, there&#8217;s always room for improvement. Feel free to
+<p>Of course, there’s always room for improvement. Feel free to
 <a class="reference external" href="https://github.com/dareenzo/ezrecords/issues">open an issue</a>
 so we can make <strong>ezrecords</strong> better, faster, stronger.</p>
 </div>
@@ -192,13 +195,10 @@ directly from github with:</p>
 <p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">git+https://github.com/dareenzo/ezrecords&#64;master#egg=ezrecords</span></code></p>
 <p>ezrecords runs with <strong>Python 2.7 and 3.5</strong>.</p>
 </div>
-<div class="section" id="testing">
-<h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
-</div>
 <div class="section" id="documentation-generation">
 <h3>Documentation Generation<a class="headerlink" href="#documentation-generation" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sh"><div class="highlight"><pre><span></span><span class="c1"># edit documentation in _docs</span>
-<span class="nb">cd</span> _docs
+<div class="highlight-sh"><div class="highlight"><pre><span class="c"># edit documentation in _docs</span>
+<span class="nb">cd </span>_docs
 make singlehtml
 <span class="nb">cd</span> ..
 cp -fR _docs/_build/singlehtml/* docs/
@@ -228,7 +228,6 @@ cp -fR _docs/_build/singlehtml/* docs/
 <li class="toctree-l2"><a class="reference internal" href="index.html#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#thank-you">Thank you</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#download-and-install">Download and Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#testing">Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#documentation-generation">Documentation Generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#copyright-license">Copyright &amp; License</a></li>
 </ul>
@@ -249,8 +248,8 @@ cp -fR _docs/_build/singlehtml/* docs/
       &copy;2017, Paulo Phagula.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
     </div>
 
