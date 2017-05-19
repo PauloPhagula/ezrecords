@@ -31,7 +31,6 @@ def _is_exception(obj):
 class Record(object):
     """A row, from a query, from a database."""
     __slots__ = ('_keys', '_values')
-
     def __init__(self, keys, values):
         self._keys = keys
         self._values = values
@@ -123,7 +122,11 @@ class RecordCollection(object):
                 yield self[i]
             else:
                 # Throws StopIteration when done.
-                yield next(self)
+                # Prevent StopIteration bubbling from generator, following https://www.python.org/dev/peps/pep-0479/
+                try:
+                    yield next(self)
+                except StopIteration:
+                    return
             i += 1
 
     def next(self):
@@ -161,10 +164,7 @@ class RecordCollection(object):
         return len(self._all_rows)
 
     def export(self, format, **kwargs):
-        """Export the RecordCollection to a given format.
-
-        Powered by Tablib.
-        """
+        """Export the RecordCollection to a given format (courtesy of Tablib)."""
         return self.dataset.export(format, **kwargs)
 
     @property
@@ -203,7 +203,7 @@ class RecordCollection(object):
         return rows
 
     def as_dict(self, ordered=False):
-        return self.all(as_dict=not ordered, as_ordereddict=ordered)
+        return self.all(as_dict=not(ordered), as_ordereddict=ordered)
 
     def first(self, default=None, as_dict=False, as_ordereddict=False):
         """Returns a single record for the RecordCollection, or `default`. If
