@@ -195,7 +195,7 @@ class Database(object):
         if len(args) == 0:
             return sql
 
-        clean_sql = cursor.mogrify(sql, tuple(args))
+        clean_sql = cursor.mogrify(sql, tuple(args))  # mogrify is not standard cursor method
 
         return clean_sql
 
@@ -234,7 +234,7 @@ class Database(object):
             self.last_query = sql + ', '.join(map(lambda x: str(x), args))
         else:
             sql = self.prepare(sql)
-            self.last_query = cursor.mogrify(sql, args)  # not standard
+            self.last_query = cursor.mogrify(sql, args)  # mogrify is not standard cursor method
 
             if self.save_queries:
                 self.timer_start()
@@ -466,6 +466,37 @@ class Database(object):
         )
 
         self.query(sql, *values)
+
+        return self.affected_rows
+
+    def bulk_insert(self, table, columns, values):
+        """Bulk insert
+
+        Args:
+            table (str): Table name
+            columns (tuple|list): columns to insert
+            values (tuple|list): values to insert
+
+        Returns:
+            int: The number of rows inserted (1) or -1 on error.
+
+        Examples:
+            >>> db.bulk_insert('table', (column, column2), [(value1, value2), (value3, value4)])
+            >>> db.bulk_insert('table', [column, column2], [(value1, value2), (value1, value2)])
+        """
+
+        single_values = '(' + ', '.join(['%s'] * len(columns)) + ')'
+
+        sql = 'INSERT INTO %s (%s) VALUES %s' % (
+            table,
+            ', '.join(columns),
+            ', '.join([single_values] * len(values))
+        )
+
+        all_values = []
+        map(lambda x: all_values.extend(list(x)), values)
+
+        self.query(sql, *tuple(all_values))
 
         return self.affected_rows
 

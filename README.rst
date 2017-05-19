@@ -57,13 +57,14 @@ API
     import logging
     from ezrecords.mysqldb import MySQLDb
 
-    # connect
     logger = logging.getLogger()
+
+    # connect
     db = MySQLDb(db_url="mysql://root:passwd@127.0.0.1:3306/test", logger=logger) # logger is optional
 
     # enable debugging - optional
     db.save_queries = True  # save queries and execution time
-    db.show_sql = True  # show SQL code being executed
+    db.show_sql = True  # show SQL code being executed. logger above is required for logging to work
     db.show_errors = True  # show errors
 
     create_user_table = """
@@ -94,6 +95,9 @@ API
     db.insert('test_user', username='scott', password='tiger', created_at=datetime.datetime.now())
     db.insert('test_user', {'username': 'JONES', 'password': 'STEEL'})
 
+    # bulk_insert records
+    self.db.bulk_insert('test_user', ('username', 'password'), [('scott', 'tiger'), ('JONES', 'STEEL')])
+
     # Update records
     db.update('test_user', {'password': 'shepard'}, {'username': 'scott'})
 
@@ -110,7 +114,7 @@ API
     db.get_var('SELECT version()')
 
     # Get specific row from many results
-    get_row('SELECT * FROM test_user', row_offset=1) # if offset not given the first row is returned
+    db.get_row('SELECT * FROM test_user', row_offset=1) # if offset not given the first row is returned
 
     # Get specific column from many results
     db.get_col('SELECT username, password FROM test_user', column_offset='password')  # offset can be numeric too
@@ -176,12 +180,6 @@ directly from github with:
 ``pip install -e git+https://github.com/dareenzo/ezrecords@master#egg=ezrecords``
 
 ezrecords runs with **Python 2.7 and 3.5**.
-
-
-Testing
---------
-
-
 
 Documentation Generation
 ------------------------

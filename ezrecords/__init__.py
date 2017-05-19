@@ -5,10 +5,7 @@
 
     Kenneth Reitz's records + Justin Vincent's ezsql/wpdb - SQLAlchemy.
 
-    ezrecords - SQL for the enhanced.
-
-    "You didn't see that coming?"
-        ― Pietro Maximoff
+    ezrecords - SQL for Humans™ Enhanced.
 
     :copyright: (c) 2017 by Paulo Phagula.
     :license: MIT, see LICENSE for more details.

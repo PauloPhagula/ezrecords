@@ -31,7 +31,7 @@ class PostgresDb(Database):
                 cursor_factory=psycopg2.extras.DictCursor
             )
 
-            # psycopg2 starts a new transaction on connenction openning by default,
+            # psycopg2 starts a new transaction on connection opening by default,
             # that means we have to commit after every statement and we don't want that.
             # if I want a transaction I'll start by hand.
             self._connection.rollback()  # rollback implicit transaction first. http://stackoverflow.com/questions/39028663/unable-to-set-psycopg2-autocommit-after-shp2pgsql-import

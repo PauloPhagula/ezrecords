@@ -51,6 +51,29 @@ CREATE TABLE test_user (
         self.db.insert('test_user', username='scott', password='tiger', created_at=datetime.datetime.now())
         self.db.insert('test_user', {'username': 'JONES', 'password': 'STEEL'})
 
+    def test_bulk_insert(self):
+
+        columns = ('username', 'password')
+        rows = [
+            ('scott', 'tigger'),
+            ('JONES', 'STEEL')
+        ]
+
+        columns1 = ['username', 'password']
+        rows1 = [
+            ['dolph', 'lundgren'],
+            ['bruce', 'lee']
+        ]
+
+        rows2 = (
+            ('scotty', 'tigger'),
+            ('JONESy', 'STEEL')
+        )
+
+        self.assertEqual(2, self.db.bulk_insert('test_user', columns, rows))
+        self.assertEqual(2, self.db.bulk_insert('test_user', columns1, rows1))
+        self.assertEqual(2, self.db.bulk_insert('test_user', columns1, rows2))
+
     def test_update(self):
         self.db.insert('test_user', username='scott', password='tiger')
         self.db.update('test_user', {'password': 'shepard'}, {'username': 'scott'})
