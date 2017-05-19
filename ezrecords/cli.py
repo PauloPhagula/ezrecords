@@ -13,22 +13,29 @@ from ezrecords.util import parse_db_url
 
 
 def cli():
-    cli_docs = """Records: SQL for Humans™
-A Kenneth Reitz project.
+    cli_docs = """ezrecords: SQL for Humans™ Enhanced
+Based on Kenneth Reitz, Records: SQL for Humans™.
+
 Usage:
   records <query> <format> [<params>...] [--url=<url>]
   records (-h | --help)
+
 Options:
   -h --help     Show this screen.
   --url=<url>   The database URL to use. Defaults to $DATABASE_URL.
+
 Supported Formats:
    csv, tsv, json, yaml, html, xls, xlsx, dbf, latex, ods
+
    Note: xls, xlsx, dbf, and ods formats are binary, and should only be
          used with redirected output e.g. '$ records sql xls > sql.xls'.
+
 Query Parameters:
     Query parameters can be specified in key=value format, and injected
     into your query in :key format e.g.:
+
     $ records 'select * from repos where language ~= :lang' lang=python
+
 Notes:
   - While you may specify a database connection string with --url, records
     will automatically default to the value of $DATABASE_URL, if available.
