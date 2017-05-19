@@ -494,7 +494,8 @@ class Database(object):
         )
 
         all_values = []
-        map(lambda x: all_values.extend(list(x)), values)
+        for value in values:
+            all_values.extend(list(value))
 
         self.query(sql, *tuple(all_values))
 
