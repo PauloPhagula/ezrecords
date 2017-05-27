@@ -3,7 +3,7 @@ from __future__ import unicode_literals, print_function, absolute_import, with_s
 import re
 import datetime
 
-from ezrecords.compat import parse_qsl, PY2, PY3, string_types, binary_type, text_type, integer_types, Decimal
+from ezrecords.compat import parse_qsl, PY2, PY3, string_types, binary_type, text_type, integer_types, Decimal, unquote
 
 
 def preg_replace(pattern, replacement, subject, limit=-1):
@@ -90,11 +90,11 @@ def parse_db_url(name):
             query = None
         components['query'] = query
 
-        # if components['username'] is not None:
-        #    components['username'] = _rfc_1738_unquote(components['username'])
+        if components['username'] is not None:
+           components['username'] = _rfc_1738_unquote(components['username'])
 
-        # if components['password'] is not None:
-        #    components['password'] = _rfc_1738_unquote(components['password'])
+        if components['password'] is not None:
+           components['password'] = _rfc_1738_unquote(components['password'])
 
         ipv4host = components.pop('ipv4host')
         ipv6host = components.pop('ipv6host')
@@ -110,6 +110,14 @@ def parse_db_url(name):
         # return URL(name, **components)
     else:
         raise ValueError("Could not parse rfc1738 URL from string '%s'" % name)
+
+
+def _rfc_1738_quote(text):
+    return re.sub(r'[:@/]', lambda m: "%%%X" % ord(m.group(0)), text)
+
+
+def _rfc_1738_unquote(text):
+    return unquote(text)
 
 
 _PROTECTED_TYPES = integer_types + (
@@ -161,6 +169,6 @@ def force_unicode(s, encoding='utf-8', strings_only=False, errors='strict'):
             # working unicode method. Try to handle this without raising a
             # further exception by individually forcing the exception args
             # to unicode.
-            s = ' '.join(force_text(arg, encoding, strings_only, errors)
+            s = ' '.join(force_unicode(arg, encoding, strings_only, errors)
                          for arg in s)
     return s

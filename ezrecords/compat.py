@@ -15,6 +15,8 @@ if PY2:
     numeric_types = (int, long, float)
     from urlparse import parse_qsl
     from decimal import Decimal
+    from urllib import quote, unquote, urlencode
+    from urlparse import urlparse, urlunparse, urljoin, urlsplit, parse_qsl
 elif PY3:
     text_type = str
     bytes_type = binary_type = bytes
@@ -23,3 +25,4 @@ elif PY3:
     numeric_types = (int, float)
     from urllib.parse import parse_qsl
     from decimal import Decimal
+    from urllib.parse import urlparse, urlunparse, urljoin, urlsplit, urlencode, quote, unquote, parse_qsl
