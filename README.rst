@@ -96,7 +96,7 @@ API
     db.insert('test_user', {'username': 'JONES', 'password': 'STEEL'})
 
     # bulk_insert records
-    self.db.bulk_insert('test_user', ('username', 'password'), [('scott', 'tiger'), ('JONES', 'STEEL')])
+    db.bulk_insert('test_user', ('username', 'password'), [('scott', 'tiger'), ('JONES', 'STEEL')])
 
     # Update records
     db.update('test_user', {'password': 'shepard'}, {'username': 'scott'})
