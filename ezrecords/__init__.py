@@ -12,7 +12,7 @@
 """
 
 __title__ = 'ezrecords'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 __author__ = 'Paulo Phagula <pphagula@gmail.com>'
 __license__ = 'ISC'
 __copyright__ = 'Copyright 2017 Paulo Phagula'
