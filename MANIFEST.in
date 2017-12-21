@@ -1,8 +1,6 @@
-include README.md LICENSE CHANGELOG.md requirements.txt
+include README.rst LICENSE CHANGELOG.md requirements.txt
 
 recursive-include tests *
 recursive-include docs *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
-
-

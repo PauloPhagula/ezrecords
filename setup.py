@@ -20,7 +20,7 @@ if sys.argv[-1] == 'publish':
 
 def file_get_contents(filename):
     """Reads an entire file into a string."""
-    assert os.path.exists(filename) and os.path.isfile(filename), 'invalid filename'
+    assert os.path.exists(filename) and os.path.isfile(filename), 'invalid filename: ' + filename
     return codecs.open(filename, 'r', 'utf-8').read()
 
 SETUP_DIR = os.path.abspath(os.path.dirname(__file__))
