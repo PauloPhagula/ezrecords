@@ -3,6 +3,12 @@
 For a complete view of all the releases, visit the releases page on GitHub:
 [https://github.com/dareenzo/ezrecords/releases](https://github.com/dareenzo/ezrecords/releases)
 
+## v0.3.0 - 2018-05-12
+
+Features:
+
+- Added support for SQLite
+
 ## v0.2.0 - 2017-05-27
 
 Features:

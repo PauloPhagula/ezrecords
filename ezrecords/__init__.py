@@ -7,12 +7,12 @@
 
     ezrecords - SQL for Humans™ Enhanced.
 
-    :copyright: (c) 2017 by Paulo Phagula.
+    :copyright: (c) 2018 by Paulo Phagula.
     :license: MIT, see LICENSE for more details.
 """
 
 __title__ = 'ezrecords'
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 __author__ = 'Paulo Phagula <pphagula@gmail.com>'
 __license__ = 'ISC'
-__copyright__ = 'Copyright 2017 Paulo Phagula'
+__copyright__ = 'Copyright 2018 Paulo Phagula'
