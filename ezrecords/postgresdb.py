@@ -57,3 +57,12 @@ class PostgresDb(Database):
     def exists(self, name, kind='table', schema='public'):
         rv = self.query_one("SELECT EXISTS (SELECT relname FROM pg_class WHERE relname=%s)", name)
         return rv['exists']
+
+    def _get_table_names(self):
+        sql = """
+SELECT table_name as "table"
+FROM information_schema.tables
+WHERE table_schema='public'
+ORDER BY table_name
+        """
+        return self.query(sql)
