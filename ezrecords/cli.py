@@ -4,7 +4,7 @@ from __future__ import unicode_literals, print_function, absolute_import, with_s
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+from sys import stdout
 from docopt import docopt
 
 from ezrecords.mysqldb import MySQLDb
@@ -14,6 +14,8 @@ from ezrecords.util import parse_db_url
 
 
 def cli():
+    supported_formats = 'csv tsv json yaml html xls xlsx dbf latex ods'.split()
+    formats_list = ", ".join(supported_formats)
     cli_docs = """ezrecords: SQL for Humans™ Enhanced
 Based on Kenneth Reitz, Records: SQL for Humans™.
 
@@ -26,7 +28,7 @@ Options:
   --url=<url>   The database URL to use. Defaults to $DATABASE_URL.
 
 Supported Formats:
-   csv, tsv, json, yaml, html, xls, xlsx, dbf, latex, ods
+    %(formats_list)s
 
    Note: xls, xlsx, dbf, and ods formats are binary, and should only be
          used with redirected output e.g. '$ records sql xls > sql.xls'.
@@ -44,8 +46,7 @@ Notes:
     can be provided instead. Use this feature discernfully; it's dangerous.
   - Records is intended for report-style exports of database queries, and
     has not yet been optimized for extremely large data dumps.
-    """
-    supported_formats = 'csv tsv json yaml html xls xlsx dbf latex ods'.split()
+    """ % dict(formats_list=formats_list)
 
     # Parse the command-line arguments.
     arguments = docopt(cli_docs)
@@ -58,13 +59,21 @@ Notes:
 
     query = arguments['<query>']
     params = arguments['<params>']
+    format = arguments.get('<format>')
+    if format and "=" in format:
+        del arguments['<format>']
+        format = None
+    if format and format not in supported_formats:
+        print('%s format not supported.' % format)
+        print('Supported formats are %s.' % formats_list)
+        exit(62) # TODO: what is 62?
 
     # Can't send an empty list if params aren't expected.
     try:
         params = dict([i.split('=') for i in params])
     except ValueError:
         print('Parameters must be given in key=value format.')
-        exit(64)
+        exit(64) # TODO: What is 64?
 
     # Execute the query, if it is a found file.
     if os.path.isfile(query):
@@ -77,14 +86,21 @@ Notes:
     # Otherwise, say the file wasn't found.
     else:
         print('The given query could not be found.')
-        exit(66)
+        exit(66) # TODO: what is 66?
 
-    # Print results in desired format.
-    if arguments['<format>']:
-        print(rows.export(arguments['<format>']))
-    else:
-        print(rows.dataset)
+    # Print results in desired format
+    if format:
+        content = rows.export(format)
+        if arguments['<format>']:
+            _print_bytes(content)
+        else:
+            print(content)
 
+def _print_bytes(content):
+    try:
+        stdout.buffer.write(content)
+    except AttributeError:
+        stdout.write(content)
 
 # Run the CLI when executed directly.
 if __name__ == '__main__':

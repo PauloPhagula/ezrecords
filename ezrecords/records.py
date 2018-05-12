@@ -58,6 +58,8 @@ class Record(object):
         # Support for string-based lookup.
         if key in self.keys():
             i = self.keys().index(key)
+            if self.keys().count(key) > 1:
+                raise KeyError("Record contains multiple '{}' fields.".format(key))
             return self.values()[i]
 
         raise KeyError("Record contains no '{}' field.".format(key))
@@ -219,14 +221,6 @@ class RecordCollection(object):
                 raise default
             return default
 
-        # Ensure that we don't have more than one row.
-        try:
-            self[1]
-        except IndexError:
-            pass
-        else:
-            raise ValueError('RecordCollection contains too many rows.')
-
         # Cast and return.
         if as_dict:
             return record.as_dict()
@@ -234,3 +228,24 @@ class RecordCollection(object):
             return record.as_dict(ordered=True)
         else:
             return record
+
+    def one(self, default=None, as_dict=False, as_ordereddict=False):
+        """Returns a single record for the RecordCollection, ensuring that it
+        is the only record, or returns `default`. If `default` is an instance
+        or subclass of Exception, then raise it instead of returning it."""
+
+        # Ensure that we don't have more than one row.
+        try:
+            self[1]
+        except IndexError:
+            return self.first(default=default, as_dict=as_dict, as_ordereddict=as_ordereddict)
+        else:
+            raise ValueError('RecordCollection contained more than one row. '
+                             'Expects only one row when using '
+                             'RecordCollection.one')
+
+    def scalar(self, default=None):
+        """Returns the first column of the first row, or `default`."""
+        row = self.one()
+        return row[0] if row else default
+
