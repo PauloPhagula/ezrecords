@@ -17,8 +17,8 @@ class PostgresDb(Database):
         super(PostgresDb, self).__init__(db_url=db_url, logger=logger)
 
     def _connect(self):
-
-        # Psycopg automatically converts PostgreSQL json data into Python objects. How can I receive strings instead?
+        # Psycopg automatically converts Postgres JSON data into Python objects.
+        # How can I receive strings instead?
         # psycopg2.extras.register_default_json(loads=lambda x: x)  # if enabled PQ stops working
 
         if self._connection is None:
@@ -38,8 +38,8 @@ class PostgresDb(Database):
             self._connection.autocommit = True
 
             # READCOMMITED
-            self._connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_READ_COMMITTED)
-
+            # self._connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_READ_COMMITTED)
+            # self._connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
             # self.set_charset('utf8')
 
     def _set_charset(self, charset, collate=None):
@@ -47,9 +47,8 @@ class PostgresDb(Database):
         self.query(sql, charset)
 
     def _db_version(self):
-        sql = 'SHOW server_version'
-        version = self.query_one(sql)['server_version']
-        return version
+        rv = self.get_var("SELECT split_part(ltrim(version(), 'PostgreSQL '), ' ', 1) as server_version;")
+        return rv
 
     def use(self, db_name):
         """select a new database to work with"""
@@ -58,3 +57,12 @@ class PostgresDb(Database):
     def exists(self, name, kind='table', schema='public'):
         rv = self.query_one("SELECT EXISTS (SELECT relname FROM pg_class WHERE relname=%s)", name)
         return rv['exists']
+
+    def _get_table_names(self):
+        sql = """
+SELECT table_name as "table"
+FROM information_schema.tables
+WHERE table_schema='public'
+ORDER BY table_name
+        """
+        return self.query(sql)

@@ -9,6 +9,7 @@ from docopt import docopt
 
 from ezrecords.mysqldb import MySQLDb
 from ezrecords.postgresdb import PostgresDb
+from ezrecords.sqlitedb import SQLiteDb
 from ezrecords.util import parse_db_url
 
 
@@ -51,13 +52,8 @@ Notes:
 
     # Create the Database.
     dsn_components = parse_db_url(arguments['--url'])
-    db = None
-    if dsn_components['dialect'] == 'mysql':
-        db = MySQLDb(arguments['--url'])
-
-    if dsn_components['dialect'] == 'postgres':
-        db = PostgresDb(arguments['--url'])
-
+    dialect_map = {'mysql': MySQLDb, 'postgres': PostgresDb, 'sqlite': SQLiteDb}
+    db = dialect_map[dsn_components['dialect']](arguments['--url'])
     assert db is not None
 
     query = arguments['<query>']
@@ -88,6 +84,7 @@ Notes:
         print(rows.export(arguments['<format>']))
     else:
         print(rows.dataset)
+
 
 # Run the CLI when executed directly.
 if __name__ == '__main__':

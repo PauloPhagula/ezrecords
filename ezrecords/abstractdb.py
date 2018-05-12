@@ -5,7 +5,8 @@ import inspect
 import codecs
 from abc import ABCMeta, abstractmethod
 from timeit import default_timer as timer
-
+import warnings
+import logging
 from munch import Munch
 
 from ezrecords.records import Record, RecordCollection
@@ -47,8 +48,9 @@ class Database(object):
 
         dsn_components = parse_db_url(db_url)
 
+        self._dialect = dsn_components['dialect']
         self._host = dsn_components['host']
-        self._port = int(dsn_components['port'])
+        self._port = int(dsn_components['port'] or 0)
         self._user = dsn_components['username']
         self._password = dsn_components['password']
         self._database = dsn_components['database']
@@ -104,6 +106,9 @@ class Database(object):
 
         #: The time the last query stopped
         self._time_stop = None
+
+        #: The placeholder used when preparing queries
+        self._placeholder = '%s'
 
         # Establish database connection
         self.connect()
@@ -182,10 +187,10 @@ class Database(object):
         self.connect()
         cursor = self._connection.cursor()
 
-        sql = str_replace("'%s'", '%s', sql)  # single-quote unquoting
-        sql = str_replace('"%s"', '%s', sql)  # double-quote unquoting
-        sql = str_replace('%f', '%s', sql)  # %f to %s
-        sql = str_replace('%d', '%s', sql)  # %f to %s
+        sql = str_replace("'%s'", self._placeholder, sql)  # single-quote unquoting
+        sql = str_replace('"%s"', self._placeholder, sql)  # double-quote unquoting
+        sql = str_replace('%f', self._placeholder, sql)  # %f to %s
+        sql = str_replace('%d', self._placeholder, sql)  # %f to %s
         sql = preg_replace(r'(%)\1+', r'\1', sql)  # quote the strings, avoiding escaped strings like %%s
 
         args = map(lambda x: x if isinstance(x, numeric_types) else (x), args)
@@ -195,8 +200,8 @@ class Database(object):
         if len(args) == 0:
             return sql
 
-        clean_sql = cursor.mogrify(sql, tuple(args))  # mogrify is not standard cursor method
-
+        # mogrify is not standard cursor method
+        clean_sql = cursor.mogrify(sql, tuple(args)) if hasattr(cursor, 'mogrify') else sql
         return clean_sql
 
     def query(self, sql, *args, **kwargs):
@@ -222,6 +227,9 @@ class Database(object):
             >>> db.query('sum_values', 1, 2, proc=True)
             3
 
+        TODO:
+            * detect cases of multi queries and warn about them. Since not every
+              driver supports
         """
         self.connect()
         cursor = self._connection.cursor()
@@ -234,8 +242,8 @@ class Database(object):
             self.last_query = sql + ', '.join(map(lambda x: str(x), args))
         else:
             sql = self.prepare(sql)
-            self.last_query = cursor.mogrify(sql, args)  # mogrify is not standard cursor method
-
+            # NOTE: mogrify is not a standard cursor method in PEP 249
+            self.last_query = cursor.mogrify(sql, args) if hasattr(cursor, 'mogrify') else sql
             if self.save_queries:
                 self.timer_start()
 
@@ -256,17 +264,10 @@ class Database(object):
 
         rv = None
         try:
-            """
-            # this block was run before records addition
-            if one:
-                rv = cursor.fetchone()
-            else:
-                rv = cursor.fetchall()
-            """
-
             rv = cursor.fetchall()
-        except:
+        except Exception as exception:
             pass
+            # if self.logger: self.logger.exception(exception)
 
         cursor.close()
 
@@ -274,7 +275,6 @@ class Database(object):
             return
 
         # Row-by-row Record generator.
-
         row_gen = (Record(list(row.keys()), list(row.values())) for row in rv)
 
         # Convert psycopg2 results to RecordCollection.
@@ -462,7 +462,7 @@ class Database(object):
         sql = 'INSERT INTO %s (%s) VALUES (%s)' % (
             table,
             ', '.join(kwargs.keys()),
-            ', '.join(['%s'] * len(values))
+            ', '.join([self._placeholder] * len(values))
         )
 
         self.query(sql, *values)
@@ -485,7 +485,7 @@ class Database(object):
             >>> db.bulk_insert('table', [column, column2], [(value1, value2), (value1, value2)])
         """
 
-        single_values = '(' + ', '.join(['%s'] * len(columns)) + ')'
+        single_values = '(' + ', '.join([self._placeholder] * len(columns)) + ')'
 
         sql = 'INSERT INTO %s (%s) VALUES %s' % (
             table,
@@ -515,6 +515,7 @@ class Database(object):
             int: The number of rows deleted, or -1 on error.
 
         Examples:
+            >>> db.delete('table')
             >>> db.delete('table', column = 'value')
             >>> db.delete('table', {'column': 'value'})
 
@@ -528,7 +529,7 @@ class Database(object):
                 conditions.append('"%s" IS NULL' % field)
                 continue
 
-            conditions.append('"' + field + '" = %s')
+            conditions.append('"' + field + '" = ' + self._placeholder)
             values.append(value)
 
         conditions = ' AND'.join(conditions)
@@ -570,7 +571,7 @@ class Database(object):
                 fields.append('"%s" = NULL' % field)
                 continue
 
-            fields.append('"' + field + '" = %s')
+            fields.append('"' + field + '" = ' + self._placeholder)
             values.append(value)
 
         for field, value in where.items():
@@ -578,7 +579,7 @@ class Database(object):
                 conditions.append('"%s" IS NULL' % field)
                 continue
 
-            conditions.append('"' + field + '" = %s')
+            conditions.append('"' + field + '" = ' + self._placeholder)
             values.append(value)
 
         fields = ', '.join(fields)
@@ -603,7 +604,16 @@ class Database(object):
         if self._connection is None:
             raise RuntimeError('Cannot BEGIN/START TRANSACTION on no connection. Connect first.')
 
-        self._connection.begin()
+        # TODO: Move these conditionals into individual drivers
+        if self._dialect == 'mysql':
+            self._connection.begin()
+
+        if self._dialect == 'postgres':
+            self._connection.set_session(autocommit=False)
+
+        if self._dialect == 'sqlite':
+            self.query('BEGIN TRANSACTION')
+
         self._in_transaction = True
 
     def rollback(self):
@@ -616,6 +626,11 @@ class Database(object):
             raise RuntimeError("Cannot ROLLBACK. There's no current connection")
 
         self._connection.rollback()
+
+        # TODO: Move these conditionals into individual drivers
+        if self._dialect == 'postgres':
+            self._connection.set_session(autocommit=True)
+
         self._in_transaction = False
 
     def commit(self):
@@ -628,6 +643,11 @@ class Database(object):
             raise RuntimeError("Cannot COMMIT. There's no current connection.")
 
         self._connection.commit()
+
+        # TODO: Move these conditionals into individual drivers
+        if self._dialect == 'postgres':
+            self._connection.set_session(autocommit=True)
+
         self._in_transaction = False
 
     # ------------------------------------------------------------------

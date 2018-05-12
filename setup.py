@@ -32,6 +32,7 @@ setup(
     version=ezrecords.__version__,
     description='SQL for the enhanced.',
     long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/x-rst',
     url='https://github.com/dareenzo/ezrecords',
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,

@@ -1,5 +1,8 @@
+.DEFAULT_GOAL := test
+.PHONY: test init publish
+
 test:
-	python -m unittest discover -s tests
+	python -m pytest
 init:
 	pip install -r requirements.txt
 publish:
