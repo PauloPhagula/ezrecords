@@ -163,8 +163,7 @@ CLI
     ezrecords -h
     ezrecords "SELECT version() AS version" "json" --url="mysql://root:passwd@127.0.0.1:3306/test"
     ezrecords "SELECT version() AS version" "json" --url="postgres://postgres:passwd@127.0.0.1:5432/test"
-    ezrecords "SELECT sqlite_version() AS version" "json" --url="postgres://postgres:passwd@127.0.0.1:5432/test"
-
+    ezrecords "SELECT sqlite_version() AS version" "json" --url="sqlite:///:memory:"
 
 Thank you
 ----------
