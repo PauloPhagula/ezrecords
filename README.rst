@@ -179,7 +179,7 @@ Download and Install
 Until the module is made available on pypi, you can install this module
 directly from github with:
 
-``pip install -e git+https://github.com/dareenzo/ezrecords@master#egg=ezrecords``
+``pip install ezrecords``
 
 ezrecords runs with **Python 2.7 and 3.5**.
 
