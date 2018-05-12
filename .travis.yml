@@ -12,6 +12,6 @@ before_script:
   - mysql -e 'CREATE DATABASE test;'
   - psql -c 'CREATE DATABASE test;' -U postgres
 script:
-  - python -m unittest discover -s tests
-  - coverage run --source=ezrecords -m unittest discover -s tests
+  - python -m pytest
+  - coverage run --source=ezrecords -m pytest
 after_success: coveralls
