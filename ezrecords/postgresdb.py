@@ -38,8 +38,8 @@ class PostgresDb(Database):
             self._connection.autocommit = True
 
             # READCOMMITED
-            self._connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_READ_COMMITTED)
-
+            # self._connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_READ_COMMITTED)
+            # self._connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
             # self.set_charset('utf8')
 
     def _set_charset(self, charset, collate=None):

@@ -48,6 +48,7 @@ class Database(object):
 
         dsn_components = parse_db_url(db_url)
 
+        self._dialect = dsn_components['dialect']
         self._host = dsn_components['host']
         self._port = int(dsn_components['port'] or 0)
         self._user = dsn_components['username']
@@ -264,8 +265,9 @@ class Database(object):
         rv = None
         try:
             rv = cursor.fetchall()
-        except exception:
-            if self.logger: logger.exception(exception)
+        except Exception as exception:
+            pass
+            # if self.logger: self.logger.exception(exception)
 
         cursor.close()
 
@@ -602,7 +604,16 @@ class Database(object):
         if self._connection is None:
             raise RuntimeError('Cannot BEGIN/START TRANSACTION on no connection. Connect first.')
 
-        self._connection.begin()
+        # TODO: Move these conditionals into individual drivers
+        if self._dialect == 'mysql':
+            self._connection.begin()
+
+        if self._dialect == 'postgres':
+            self._connection.set_session(autocommit=False)
+
+        if self._dialect == 'sqlite':
+            self.query('BEGIN TRANSACTION')
+
         self._in_transaction = True
 
     def rollback(self):
@@ -615,6 +626,11 @@ class Database(object):
             raise RuntimeError("Cannot ROLLBACK. There's no current connection")
 
         self._connection.rollback()
+
+        # TODO: Move these conditionals into individual drivers
+        if self._dialect == 'postgres':
+            self._connection.set_session(autocommit=True)
+
         self._in_transaction = False
 
     def commit(self):
@@ -627,6 +643,11 @@ class Database(object):
             raise RuntimeError("Cannot COMMIT. There's no current connection.")
 
         self._connection.commit()
+
+        # TODO: Move these conditionals into individual drivers
+        if self._dialect == 'postgres':
+            self._connection.set_session(autocommit=True)
+
         self._in_transaction = False
 
     # ------------------------------------------------------------------

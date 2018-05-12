@@ -177,6 +177,21 @@ CREATE TABLE test_user (
         row = self.db.query_one('SELECT * FROM test_user')
         self.assertEqual(unicode_str, row['username'])
 
+    def test_cannot_call_stored_procedured(self):
+        pass
+
+    def test_transactions(self):
+        self.db.begin_transaction()
+        self.db.insert('test_user', {'username': 'x', 'password': 'secret'})
+        self.db.insert('test_user', {'username': 'y', 'password': 'secret'})
+        self.db.rollback()
+        self.assertEqual(0, self.db.get_var("SELECT count(*) as x FROM test_user"))
+
+        self.db.begin_transaction()
+        self.db.insert('test_user', {'username': 'z', 'password': 'secret'})
+        self.db.commit()
+        self.assertEqual(1, self.db.get_var("SELECT count(*) as x FROM test_user"))
+
     def test_warns_for_multiple_statements(self):
         pass
 
