@@ -67,14 +67,13 @@ CREATE TABLE test_user (
         self.assertEqual(unicode_str, row.username)
 
     def test_can_call_stored_procedures(self):
+        self.db.query("DROP FUNCTION IF EXISTS adds(IN a int, IN b int)")
         create_proc_sql = """
-    DROP FUNCTION IF EXISTS adds(IN a int, IN b int);
-
     CREATE FUNCTION adds (integer, integer) RETURNS integer
         AS 'select $1 + $2;'
         LANGUAGE SQL
         IMMUTABLE
-        RETURNS NULL ON NULL INPUT;
+        RETURNS NULL ON NULL INPUT
             """
         self.db.query(create_proc_sql)
         rv = self.db.call_procedure('adds', 1, 2)

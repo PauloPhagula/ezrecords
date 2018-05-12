@@ -91,8 +91,8 @@ class MySQLDb(Database):
     def _get_table_names(self):
         sql = """
 SELECT table_name AS "table" -- , ROUND(((data_length + index_length) / 1024 / 1024), 2) "size_in_mb"
-  FROM information_schema.TABLES
-  WHERE table_schema = database()
-  ORDER BY 1 -- (data_length + index_length) DESC
+FROM information_schema.TABLES
+WHERE table_schema = database()
+ORDER BY 1 -- (data_length + index_length) DESC
         """
         return self.query(sql)
