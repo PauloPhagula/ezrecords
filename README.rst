@@ -34,7 +34,7 @@ surprisingly difficult with the standard tools available.
 This library strives to make this workflow as simple as possible,
 while providing an elegant interface to work with your query results.
 
-*Database support includes Postgres, MySQL (drivers not included).*
+*Database support includes SQLite, Postgres, and MySQL (drivers not included).*
 
 Why?
 ----
