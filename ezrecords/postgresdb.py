@@ -47,9 +47,8 @@ class PostgresDb(Database):
         self.query(sql, charset)
 
     def _db_version(self):
-        sql = 'SHOW server_version'
-        version = self.query_one(sql)['server_version']
-        return version
+        rv = self.get_var("SELECT split_part(ltrim(version(), 'PostgreSQL '), ' ', 1) as server_version;")
+        return rv
 
     def use(self, db_name):
         """select a new database to work with"""
