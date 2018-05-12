@@ -3,7 +3,10 @@ from __future__ import unicode_literals, print_function, absolute_import, with_s
 import re
 import datetime
 
-from ezrecords.compat import parse_qsl, PY2, PY3, string_types, binary_type, text_type, integer_types, Decimal, unquote
+from ezrecords.compat import (
+    parse_qsl, PY2, PY3, string_types, binary_type, text_type, integer_types,
+    Decimal, unquote
+)
 
 
 def preg_replace(pattern, replacement, subject, limit=-1):
@@ -51,7 +54,7 @@ def format_timedelta(delta, granularity='second', threshold=.85):
 
 
 def parse_db_url(name):
-    """Parses the given db url string and returns it's components
+    """Parses the given db URL string and returns it's components
 
     The string form of the URL is
     `dialect[+driver]://user:password@host/dbname[?key=value]`, where

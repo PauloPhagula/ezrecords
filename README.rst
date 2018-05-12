@@ -40,8 +40,10 @@ Why?
 ----
 
 - `records`_ is awesome
-- `ezsql`_ and `wpdb`_ have very nice API, so it makes for an easy transition from PHP to Python
-- Our love for crafting well written and performant SQL queries is not questionable, but I think a few helpers for some basic DML and recurring queries would help
+- `ezsql`_ and `wpdb`_ have very nice API, so it makes for an easy transition
+  from PHP to Python
+- Our love for crafting well written and performant SQL queries is not questionable,
+  but I think a few helpers for some basic DML and recurring queries would help
 - *"The ORM takes two brilliant ideas and incapacitates them both."*,
   said a very wise man. So, as long as possible I want to keep away from
   sqlalchemy or the like.
@@ -161,6 +163,7 @@ CLI
     ezrecords -h
     ezrecords "SELECT version() AS version" "json" --url="mysql://root:passwd@127.0.0.1:3306/test"
     ezrecords "SELECT version() AS version" "json" --url="postgres://postgres:passwd@127.0.0.1:5432/test"
+    ezrecords "SELECT sqlite_version() AS version" "json" --url="postgres://postgres:passwd@127.0.0.1:5432/test"
 
 
 Thank you
@@ -169,7 +172,7 @@ Thanks for checking this library out! I hope you find it useful.
 
 Of course, there's always room for improvement. Feel free to
 `open an issue <https://github.com/dareenzo/ezrecords/issues>`_
-so we can make **ezrecords** better, faster, stronger.
+so we can make **ezrecords** better, faster, and stronger.
 
 Download and Install
 --------------------

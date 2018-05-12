@@ -10,6 +10,7 @@ class MySQLDb(Database):
 
     def __init__(self, db_url=None, logger=None):
         super(MySQLDb, self).__init__(db_url=db_url, logger=logger)
+        self._placeholder = '%s'
 
     def _connect(self):
         if self._connection is None:
@@ -21,7 +22,7 @@ class MySQLDb(Database):
 
             DB_CHARSET = os.getenv('DB_CHARSET', 'utf8mb4')
             DB_COLLATION = os.getenv('DB_COLLATION', 'utf8mb4_general_ci')
-            DB_SQL_MODE = os.getenv('DB_SQL_MODE', "'ANSI,STRICT_TRANS_TABLES,STRICT_ALL_TABLES,ONLY_FULL_GROUP_BY'")
+            DB_SQL_MODE = os.getenv('DB_SQL_MODE', "'ANSI,STRICT_ALL_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,ONLY_FULL_GROUP_BY'")
             DB_TIMEZONE = os.getenv('DB_TIMEZONE', "'+2:00'")
 
             self._connection = pymysql.connect(
@@ -42,7 +43,7 @@ class MySQLDb(Database):
 
             # Default MySQL behavior to conform more closely to SQL standards.
             # This allows to run almost seamlessly on many different kinds of database systems.
-            # These settings force MySQL to behave the same as postgresql, or sqlite
+            # These settings force MySQL to behave the same as Postgres or SQLite
             # in regards to syntax interpretation and invalid data handling. See
             # https://www.drupal.org/node/344575 for further discussion. Also, as MySQL
             # 5.5 changed the meaning of TRADITIONAL we need to spell out the modes one by one
@@ -70,8 +71,8 @@ class MySQLDb(Database):
         self._connection.select_db(db_name)
 
     def exists(self, name, kind='table', schema='public'):
-        rv = self.query_one("SELECT EXISTS ()", name)
-        return rv['exists']
+        rv = self.query_one("SELECT COUNT(*) as table_count FROM information_schema.tables WHERE table_schema = database() AND table_name = %s", name)
+        return bool(rv['table_count'])
 
     def set_sql_mode(self, modes):
         """Changes the current SQL mode.

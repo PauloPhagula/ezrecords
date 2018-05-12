@@ -17,8 +17,8 @@ class PostgresDb(Database):
         super(PostgresDb, self).__init__(db_url=db_url, logger=logger)
 
     def _connect(self):
-
-        # Psycopg automatically converts PostgreSQL json data into Python objects. How can I receive strings instead?
+        # Psycopg automatically converts Postgres JSON data into Python objects.
+        # How can I receive strings instead?
         # psycopg2.extras.register_default_json(loads=lambda x: x)  # if enabled PQ stops working
 
         if self._connection is None:

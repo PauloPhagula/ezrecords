@@ -31,6 +31,7 @@ def _is_exception(obj):
 class Record(object):
     """A row, from a query, from a database."""
     __slots__ = ('_keys', '_values')
+
     def __init__(self, keys, values):
         self._keys = keys
         self._values = values
@@ -233,4 +234,3 @@ class RecordCollection(object):
             return record.as_dict(ordered=True)
         else:
             return record
-
