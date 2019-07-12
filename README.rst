@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdareenzo%2Fezrecords.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdareenzo%2Fezrecords?ref=badge_shield)
+
 ezrecords: SQL for Humans™ Enhanced
 ====================================
 
@@ -201,3 +203,6 @@ Copyright & License
 Code and documentation are available according to the MIT License.
 
 See the `LICENSE`_ file for details.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdareenzo%2Fezrecords.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdareenzo%2Fezrecords?ref=badge_large)
