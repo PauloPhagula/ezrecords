@@ -1,9 +1,10 @@
 ezrecords: SQL for Humans™ Enhanced
 ====================================
 
-.. image:: https://img.shields.io/github/release/dareenzo/ezrecords.svg
-    :target: https://github.com/dareenzo/ezrecords/releases
-    :alt: Latest Version
+
+.. image:: https://img.shields.io/pypi/v/ezrecords.svg
+    :target: https://pypi.org/project/ezrecords
+    :alt: PyPI
 
 .. image:: https://travis-ci.org/dareenzo/ezrecords.svg?branch=master
     :target: https://travis-ci.org/dareenzo/ezrecords
@@ -46,7 +47,7 @@ Why?
   but I think a few helpers for some basic DML and recurring queries would help
 - *"The ORM takes two brilliant ideas and incapacitates them both."*,
   said a very wise man. So, as long as possible I want to keep away from
-  sqlalchemy or the like.
+  SQLAlchemy or the like.
 
 Usage
 ------
@@ -158,6 +159,13 @@ API
 CLI
 ~~~
 
+As an added bonus, a records command-line tool is automatically included. Here's a screenshot of the usage information:
+
+.. image:: artwork/cli.png
+    :alt: CLI
+
+Here's some usage example
+
 .. code:: bash
 
     ezrecords -h
@@ -165,19 +173,8 @@ CLI
     ezrecords "SELECT version() AS version" "json" --url="postgres://postgres:passwd@127.0.0.1:5432/test"
     ezrecords "SELECT sqlite_version() AS version" "json" --url="sqlite:///:memory:"
 
-Thank you
-----------
-Thanks for checking this library out! I hope you find it useful.
-
-Of course, there's always room for improvement. Feel free to
-`open an issue <https://github.com/dareenzo/ezrecords/issues>`_
-so we can make **ezrecords** better, faster, and stronger.
-
-Download and Install
+Installation
 --------------------
-
-Until the module is made available on pypi, you can install this module
-directly from github with:
 
 ``pip install ezrecords``
 
@@ -201,3 +198,12 @@ Copyright & License
 Code and documentation are available according to the MIT License.
 
 See the `LICENSE`_ file for details.
+
+
+Thank you
+----------
+Thanks for checking this library out! I hope you find it useful.
+
+Of course, there's always room for improvement. Feel free to
+`open an issue <https://github.com/dareenzo/ezrecords/issues>`_
+so we can make **ezrecords** better, faster, and stronger.
