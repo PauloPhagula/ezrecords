@@ -5,3 +5,4 @@ psycopg2==2.7
 PyMySQL==0.7.9
 pytest==3.5.1
 pytest-testdox==1.0.1
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
