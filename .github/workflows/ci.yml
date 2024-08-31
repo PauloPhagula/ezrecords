@@ -27,7 +27,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
+          POSTGRES_DB: test
         ports:
           - 5432:5432
         options: >-
@@ -41,9 +41,7 @@ jobs:
         env:
           MYSQL_HOST: 127.0.0.1
           MYSQL_DATABASE: test
-          MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_PASSWORD: ''
         ports:
           - 3306:3306
         options: >-
