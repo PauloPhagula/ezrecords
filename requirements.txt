@@ -1,4 +1,4 @@
-tablib==0.12.1
+tablib==3.6.1
 munch==4.0.0
 docopt==0.6.2
 psycopg2==2.9.9
