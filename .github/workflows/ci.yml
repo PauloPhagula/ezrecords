@@ -69,12 +69,13 @@ jobs:
       - name: Install tox and any other packages
         run: pip install tox
 
-      # - name: Run tox
-      #   # Run tox using the version of Python in `PATH`
-      #   run: tox -e py
       - name: Run pytest
         run: python -m pytest
 
       - name: Run coverage
         run: coverage run --source=ezrecords -m pytest
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+
 # vim: set ft=yaml tw=80 ts=2 sts=2 sw=2 et :
