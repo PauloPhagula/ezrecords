@@ -37,7 +37,7 @@ CREATE TABLE test_user (
 
     def test_gets_db_engine_version(self):
         db_version = self.db.db_version()
-        self.assertTrue(db_version.startswith('9'))
+        self.assertTrue(db_version.startswith('16'))
 
     def test_cannot_change_databases(self):
         # \c is not part of SQL, but of Postgres' CLI
