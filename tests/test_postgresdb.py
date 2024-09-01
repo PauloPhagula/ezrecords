@@ -12,7 +12,7 @@ from ezrecords.postgresdb import PostgresDb
 class PostgresDbTests(unittest.TestCase):
 
     def setUp(self):
-        dsn = os.getenv('DATABASE_URL', "postgres://postgres@127.0.0.1:5432/test")
+        dsn = os.getenv('DATABASE_URL', "postgres://postgres:postgres@127.0.0.1:5432/test")
         logger = logging.getLogger()
         self.db = PostgresDb(db_url=dsn, logger=logger)
 
