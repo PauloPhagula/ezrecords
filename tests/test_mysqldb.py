@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS test_user (
     def test_gets_db_engine_version(self):
         self.db.show_sql = True
         db_version = self.db.db_version()
-        self.assertTrue(db_version.startswith('8'))
+        self.assertTrue(db_version.startswith('9'))
 
     def test_can_change_database(self):
         self.db.use('information_schema')
