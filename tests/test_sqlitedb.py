@@ -8,7 +8,6 @@ import logging
 
 from ezrecords.sqlitedb import SQLiteDb
 
-
 class SQLiteDbTests(unittest.TestCase):
 
     def setUp(self):
@@ -194,5 +193,3 @@ CREATE TABLE test_user (
 
     def test_warns_for_multiple_statements(self):
         pass
-
-

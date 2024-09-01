@@ -33,7 +33,7 @@ def format_timedelta(delta, granularity='second', threshold=.85):
     }
 
     if isinstance(delta, datetime.datetime):
-        delta = datetime.datetime.utcnow() - delta
+        delta = datetime.datetime.now(datetime.UTC) - delta
     if isinstance(delta, datetime.timedelta):
         seconds = int((delta.days * 86400) + delta.seconds)
     else:
