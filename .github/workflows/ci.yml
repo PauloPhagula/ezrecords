@@ -78,7 +78,7 @@ jobs:
         with:
           parallel: true
           flag-name: run-${{ matrix.python-version }}
-  finish:
+  coveralls-finish:
     needs: test
     if: ${{ always() }}
     runs-on: ubuntu-latest
