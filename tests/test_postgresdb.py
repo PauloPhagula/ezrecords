@@ -12,7 +12,7 @@ from ezrecords.postgresdb import PostgresDb
 class PostgresDbTests(unittest.TestCase):
 
     def setUp(self):
-        dsn = os.getenv('DATABASE_URL', "postgres://postgres@127.0.0.1:5432/test")
+        dsn = os.getenv('DATABASE_URL', "postgres://postgres:postgres@127.0.0.1:5432/test")
         logger = logging.getLogger()
         self.db = PostgresDb(db_url=dsn, logger=logger)
 
@@ -37,7 +37,7 @@ CREATE TABLE test_user (
 
     def test_gets_db_engine_version(self):
         db_version = self.db.db_version()
-        self.assertTrue(db_version.startswith('9'))
+        self.assertTrue(db_version.startswith('16'))
 
     def test_cannot_change_databases(self):
         # \c is not part of SQL, but of Postgres' CLI

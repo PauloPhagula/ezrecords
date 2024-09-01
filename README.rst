@@ -6,19 +6,19 @@ ezrecords: SQL for Humans™ Enhanced
     :target: https://pypi.org/project/ezrecords
     :alt: PyPI
 
-.. image:: https://travis-ci.org/dareenzo/ezrecords.svg?branch=master
-    :target: https://travis-ci.org/dareenzo/ezrecords
-    :alt: Build
+.. image:: https://github.com/PauloPhagula/ezrecords/actions/workflows/ci.yml/badge.svg
+    :target: https://github.com/PauloPhagula/ezrecords/actions/workflows/ci.yml
+    :alt: CI
 
-.. image:: https://coveralls.io/repos/github/dareenzo/ezrecords/badge.svg?branch=master
-    :target: https://coveralls.io/github/dareenzo/ezrecords?branch=master
+.. image:: https://coveralls.io/repos/github/PauloPhagula/ezrecords/badge.svg?branch=master
+    :target: https://coveralls.io/github/PauloPhagula/ezrecords?branch=master
     :alt: Coverage
 
-.. image:: https://img.shields.io/github/license/dareenzo/ezrecords.svg
-    :target: https://github.com/dareenzo/ezrecords/blob/master/LICENSE
+.. image:: https://img.shields.io/github/license/PauloPhagula/ezrecords.svg
+    :target: https://github.com/PauloPhagula/ezrecords/blob/master/LICENSE
     :alt: License
 
-.. _LICENSE: http://www.github.com/dareenzo/ezrecords/blob/master/LICENSE
+.. _LICENSE: http://www.github.com/PauloPhagula/ezrecords/blob/master/LICENSE
 .. _records: https://github.com/kennethreitz/records
 .. _ezsql: https://github.com/ezSQL/ezSQL
 .. _wpdb: https://codex.wordpress.org/Class_Reference/wpdb
@@ -205,5 +205,5 @@ Thank you
 Thanks for checking this library out! I hope you find it useful.
 
 Of course, there's always room for improvement. Feel free to
-`open an issue <https://github.com/dareenzo/ezrecords/issues>`_
+`open an issue <https://github.com/PauloPhagula/ezrecords/issues>`_
 so we can make **ezrecords** better, faster, and stronger.
