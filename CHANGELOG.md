@@ -1,7 +1,13 @@
 # Change log
 
 For a complete view of all the releases, visit the releases page on GitHub:
-[https://github.com/dareenzo/ezrecords/releases](https://github.com/dareenzo/ezrecords/releases)
+[https://github.com/PauloPhagula/ezrecords/releases](https://github.com/PauloPhagula/ezrecords/releases)
+
+## v1.0.0 - 2026-03-09
+
+Breaking changes:
+
+- Dropped Python 2 support, while maintaining compatibility only with maintained Python 3 versions
 
 ## v0.3.0 - 2018-05-12
 
