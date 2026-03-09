@@ -178,7 +178,7 @@ Installation
 
 ``pip install ezrecords``
 
-ezrecords runs with **Python 2.7 and 3.5**.
+ezrecords runs on **Python 3.11**.
 
 Documentation Generation
 ------------------------
