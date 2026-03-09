@@ -1,82 +1,76 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>ezrecords 0.3.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.3.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=f0c481ad"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body role="document">
+  
+  
+
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
-  <div class="section" id="welcome-to-ezrecords-s-documentation">
-<h1>Welcome to ezrecords&#8217;s documentation!<a class="headerlink" href="#welcome-to-ezrecords-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <section id="welcome-to-ezrecords-s-documentation">
+<h1>Welcome to ezrecords’s documentation!<a class="headerlink" href="#welcome-to-ezrecords-s-documentation" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
-<span id="document-readme"></span><div class="section" id="ezrecords-sql-for-humans-enhanced">
-<h2>ezrecords: SQL for Humans™ Enhanced<a class="headerlink" href="#ezrecords-sql-for-humans-enhanced" title="Permalink to this headline">¶</a></h2>
-<a class="reference external image-reference" href="https://github.com/dareenzo/ezrecords/releases"><img alt="Latest Version" src="https://img.shields.io/github/release/dareenzo/ezrecords.svg" /></a>
-<a class="reference external image-reference" href="https://travis-ci.org/dareenzo/ezrecords"><img alt="Build" src="https://travis-ci.org/dareenzo/ezrecords.svg?branch=master" /></a>
-<a class="reference external image-reference" href="https://coveralls.io/github/dareenzo/ezrecords?branch=master"><img alt="Coverage" src="https://coveralls.io/repos/github/dareenzo/ezrecords/badge.svg?branch=master" /></a>
-<a class="reference external image-reference" href="https://github.com/dareenzo/ezrecords/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/dareenzo/ezrecords.svg" /></a>
+<span id="document-readme"></span><section id="ezrecords-sql-for-humans-enhanced">
+<h2>ezrecords: SQL for Humans™ Enhanced<a class="headerlink" href="#ezrecords-sql-for-humans-enhanced" title="Link to this heading">¶</a></h2>
+<a class="reference external image-reference" href="https://pypi.org/project/ezrecords"><img alt="PyPI" src="https://img.shields.io/pypi/v/ezrecords.svg" />
+</a>
+<a class="reference external image-reference" href="https://github.com/PauloPhagula/ezrecords/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/PauloPhagula/ezrecords/actions/workflows/ci.yml/badge.svg" />
+</a>
+<a class="reference external image-reference" href="https://coveralls.io/github/PauloPhagula/ezrecords?branch=master"><img alt="Coverage" src="https://coveralls.io/repos/github/PauloPhagula/ezrecords/badge.svg?branch=master" />
+</a>
+<a class="reference external image-reference" href="https://github.com/PauloPhagula/ezrecords/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/PauloPhagula/ezrecords.svg" />
+</a>
 <p><strong>ezrecords is a very simple, but powerful, library for making raw SQL
 queries to most relational databases.</strong></p>
-<p>ezrecords = Kenneth Reitz&#8217;s <a class="reference external" href="https://github.com/kennethreitz/records">records</a> + Justin Vincent&#8217;s <a class="reference external" href="https://github.com/ezSQL/ezSQL">ezsql</a> + WordPress&#8217; <a class="reference external" href="https://codex.wordpress.org/Class_Reference/wpdb">wpdb</a> - <a class="reference external" href="http://www.sqlalchemy.org">SQLAlchemy</a>.</p>
+<p>ezrecords = Kenneth Reitz’s <a class="reference external" href="https://github.com/kennethreitz/records">records</a> + Justin Vincent’s <a class="reference external" href="https://github.com/ezSQL/ezSQL">ezsql</a> + WordPress’ <a class="reference external" href="https://codex.wordpress.org/Class_Reference/wpdb">wpdb</a> - <a class="reference external" href="http://www.sqlalchemy.org">SQLAlchemy</a>.</p>
 <p>Just write SQL. No bells, no whistles. This common task can be
 surprisingly difficult with the standard tools available.
 This library strives to make this workflow as simple as possible,
 while providing an elegant interface to work with your query results.</p>
 <p><em>Database support includes SQLite, Postgres, and MySQL (drivers not included).</em></p>
-<div class="section" id="why">
-<h3>Why?<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h3>
+<section id="why">
+<h3>Why?<a class="headerlink" href="#why" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/kennethreitz/records">records</a> is awesome</li>
-<li><a class="reference external" href="https://github.com/ezSQL/ezSQL">ezsql</a> and <a class="reference external" href="https://codex.wordpress.org/Class_Reference/wpdb">wpdb</a> have very nice API, so it makes for an easy transition
-from PHP to Python</li>
-<li>Our love for crafting well written and performant SQL queries is not questionable,
-but I think a few helpers for some basic DML and recurring queries would help</li>
-<li><em>&#8220;The ORM takes two brilliant ideas and incapacitates them both.&#8221;</em>,
+<li><p><a class="reference external" href="https://github.com/kennethreitz/records">records</a> is awesome</p></li>
+<li><p><a class="reference external" href="https://github.com/ezSQL/ezSQL">ezsql</a> and <a class="reference external" href="https://codex.wordpress.org/Class_Reference/wpdb">wpdb</a> have very nice API, so it makes for an easy transition
+from PHP to Python</p></li>
+<li><p>Our love for crafting well written and performant SQL queries is not questionable,
+but I think a few helpers for some basic DML and recurring queries would help</p></li>
+<li><p><em>“The ORM takes two brilliant ideas and incapacitates them both.”</em>,
 said a very wise man. So, as long as possible I want to keep away from
-sqlalchemy or the like.</li>
+SQLAlchemy or the like.</p></li>
 </ul>
-</div>
-<div class="section" id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="api">
-<h4>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h4>
-<div class="code Python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">ezrecords.mysqldb</span> <span class="k">import</span> <span class="n">MySQLDb</span>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h3>
+<section id="api">
+<h4>API<a class="headerlink" href="#api" title="Link to this heading">¶</a></h4>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ezrecords.mysqldb</span><span class="w"> </span><span class="kn">import</span> <span class="n">MySQLDb</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
 
@@ -174,86 +168,98 @@ sqlalchemy or the like.</li>
 <span class="n">db</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span> <span class="c1"># clear cache results</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="cli">
-<h4>CLI<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h4>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">ezrecords</span> <span class="o">-</span><span class="n">h</span>
-<span class="n">ezrecords</span> <span class="s2">&quot;SELECT version() AS version&quot;</span> <span class="s2">&quot;json&quot;</span> <span class="o">--</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;mysql://root:passwd@127.0.0.1:3306/test&quot;</span>
-<span class="n">ezrecords</span> <span class="s2">&quot;SELECT version() AS version&quot;</span> <span class="s2">&quot;json&quot;</span> <span class="o">--</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;postgres://postgres:passwd@127.0.0.1:5432/test&quot;</span>
-<span class="n">ezrecords</span> <span class="s2">&quot;SELECT sqlite_version() AS version&quot;</span> <span class="s2">&quot;json&quot;</span> <span class="o">--</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;sqlite:///:memory:&quot;</span>
+</section>
+<section id="cli">
+<h4>CLI<a class="headerlink" href="#cli" title="Link to this heading">¶</a></h4>
+<p>As an added bonus, a records command-line tool is automatically included. Here’s a screenshot of the usage information:</p>
+<img alt="CLI" src="artwork/cli.png" />
+<p>Here’s some usage example</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ezrecords<span class="w"> </span>-h
+ezrecords<span class="w"> </span><span class="s2">&quot;SELECT version() AS version&quot;</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="w"> </span>--url<span class="o">=</span><span class="s2">&quot;mysql://root:passwd@127.0.0.1:3306/test&quot;</span>
+ezrecords<span class="w"> </span><span class="s2">&quot;SELECT version() AS version&quot;</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="w"> </span>--url<span class="o">=</span><span class="s2">&quot;postgres://postgres:passwd@127.0.0.1:5432/test&quot;</span>
+ezrecords<span class="w"> </span><span class="s2">&quot;SELECT sqlite_version() AS version&quot;</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="w"> </span>--url<span class="o">=</span><span class="s2">&quot;sqlite:///:memory:&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="thank-you">
-<h3>Thank you<a class="headerlink" href="#thank-you" title="Permalink to this headline">¶</a></h3>
-<p>Thanks for checking this library out! I hope you find it useful.</p>
-<p>Of course, there&#8217;s always room for improvement. Feel free to
-<a class="reference external" href="https://github.com/dareenzo/ezrecords/issues">open an issue</a>
-so we can make <strong>ezrecords</strong> better, faster, and stronger.</p>
-</div>
-<div class="section" id="download-and-install">
-<h3>Download and Install<a class="headerlink" href="#download-and-install" title="Permalink to this headline">¶</a></h3>
-<p>Until the module is made available on pypi, you can install this module
-directly from github with:</p>
-<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">git+https://github.com/dareenzo/ezrecords&#64;master#egg=ezrecords</span></code></p>
-<p>ezrecords runs with <strong>Python 2.7 and 3.5</strong>.</p>
-</div>
-<div class="section" id="documentation-generation">
-<h3>Documentation Generation<a class="headerlink" href="#documentation-generation" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sh"><div class="highlight"><pre><span></span><span class="c1"># edit documentation in _docs</span>
-<span class="nb">cd</span> _docs
-make singlehtml
-<span class="nb">cd</span> ..
-cp -fR _docs/_build/singlehtml/* docs/
+</section>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ezrecords</span></code></p>
+<p>ezrecords runs on <strong>Python 3.11</strong>.</p>
+</section>
+<section id="documentation-generation">
+<h3>Documentation Generation<a class="headerlink" href="#documentation-generation" title="Link to this heading">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># edit documentation in _docs</span>
+<span class="nb">cd</span><span class="w"> </span>_docs
+make<span class="w"> </span>singlehtml
+<span class="nb">cd</span><span class="w"> </span>..
+cp<span class="w"> </span>-fR<span class="w"> </span>_docs/_build/singlehtml/*<span class="w"> </span>docs/
 </pre></div>
 </div>
-</div>
-<div class="section" id="copyright-license">
-<h3>Copyright &amp; License<a class="headerlink" href="#copyright-license" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="copyright-license">
+<h3>Copyright &amp; License<a class="headerlink" href="#copyright-license" title="Link to this heading">¶</a></h3>
 <p>Code and documentation are available according to the MIT License.</p>
-<p>See the <a class="reference external" href="http://www.github.com/dareenzo/ezrecords/blob/master/LICENSE">LICENSE</a> file for details.</p>
+<p>See the <a class="reference external" href="http://www.github.com/PauloPhagula/ezrecords/blob/master/LICENSE">LICENSE</a> file for details.</p>
+</section>
+<section id="thank-you">
+<h3>Thank you<a class="headerlink" href="#thank-you" title="Link to this heading">¶</a></h3>
+<p>Thanks for checking this library out! I hope you find it useful.</p>
+<p>Of course, there’s always room for improvement. Feel free to
+<a class="reference external" href="https://github.com/PauloPhagula/ezrecords/issues">open an issue</a>
+so we can make <strong>ezrecords</strong> better, faster, and stronger.</p>
+</section>
+</section>
 </div>
-</div>
-</div>
-</div>
+</section>
 
 
           </div>
+          
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html#document-index">Table Of Contents</a></h3>
-  <p class="caption"><span class="caption-text">Contents:</span></p>
+<h1 class="logo"><a href="#">ezrecords</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-readme">ezrecords: SQL for Humans™ Enhanced</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#why">Why?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#thank-you">Thank you</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#download-and-install">Download and Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#documentation-generation">Documentation Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#copyright-license">Copyright &amp; License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-readme">ezrecords: SQL for Humans™ Enhanced</a></li>
 </ul>
-</li>
-</ul>
+
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="index.html#document-index">Documentation overview</a><ul>
+  <li><a href="#">Documentation overview</a><ul>
   </ul></li>
 </ul>
 </div>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Paulo Phagula.
+      &#169;2018, Paulo Phagula.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
     </div>
 
