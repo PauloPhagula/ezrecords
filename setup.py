@@ -25,15 +25,15 @@ def file_get_contents(filename):
 
 SETUP_DIR = os.path.abspath(os.path.dirname(__file__))
 AUTHOR, AUTHOR_EMAIL = parseaddr(ezrecords.__author__)
-LONG_DESCRIPTION = '\n'.join([file_get_contents('README.rst'), file_get_contents('CHANGELOG.md')])
+LONG_DESCRIPTION = '\n\n'.join([file_get_contents('README.rst'), file_get_contents('CHANGELOG.md')])
 
 setup(
     name='ezrecords',
     version=ezrecords.__version__,
-    description='SQL for the enhanced.',
+    description='SQL for Humans enhanced.',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/x-rst',
-    url='https://github.com/dareenzo/ezrecords',
+    url='https://github.com/PauloPhagula/ezrecords',
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     license='MIT',

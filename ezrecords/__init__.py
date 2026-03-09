@@ -14,5 +14,5 @@
 __title__ = 'ezrecords'
 __version__ = '0.3.0'
 __author__ = 'Paulo Phagula <pphagula@gmail.com>'
-__license__ = 'ISC'
+__license__ = 'MIT'
 __copyright__ = 'Copyright 2018 Paulo Phagula'
