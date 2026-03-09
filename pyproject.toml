@@ -38,7 +38,7 @@ ezrecords = "ezrecords.cli:cli"
 
 [dependency-groups]
 dev = [
-  "pytest==8.3.3",
+  "pytest==9.0.2",
   "pytest-testdox==3.1.0",
   "coverage",
 ]
