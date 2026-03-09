@@ -4,7 +4,7 @@ import re
 import datetime
 
 from ezrecords.compat import (
-    parse_qsl, PY2, PY3, string_types, binary_type, text_type, integer_types,
+    parse_qsl, PY3, string_types, binary_type, text_type, integer_types,
     Decimal, unquote
 )
 
@@ -87,8 +87,6 @@ def parse_db_url(name):
             components['database'] = tokens[0]
             query = (
                 len(tokens) > 1 and dict(parse_qsl(tokens[1]))) or None
-            if PY2 and query is not None:
-                query = dict((k.encode('ascii'), query[k]) for k in query)
         else:
             query = None
         components['query'] = query

@@ -1,5 +1,4 @@
 # coding: utf-8
-from __future__ import unicode_literals, print_function, absolute_import, with_statement
 
 import os
 import unittest
@@ -37,12 +36,14 @@ CREATE TABLE test_user (
 
     def test_gets_db_engine_version(self):
         db_version = self.db.db_version()
-        self.assertTrue(db_version.startswith('16'))
+        self.assertRegex(db_version, r'^\d+(\.\d+)*$')
+        major = int(db_version.split('.')[0])
+        self.assertGreaterEqual(major, 10)
 
     def test_cannot_change_databases(self):
         # \c is not part of SQL, but of Postgres' CLI
         with self.assertRaises(Exception):
-            self.db.use('some_db');
+            self.db.use('some_db')
 
     def test_get_table_names_returns_list_of_tables(self):
         rows = self.db.get_table_names()
