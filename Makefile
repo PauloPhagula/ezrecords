@@ -2,11 +2,10 @@
 .PHONY: test init publish
 
 test:
-	python -m pytest
+	uv run pytest
 init:
-	pip install -r requirements.txt
+	uv sync --locked
 publish:
-	python setup.py register
-	python setup.py sdist upload
-	python setup.py bdist_wheel --universal upload
+	uv build
+	uv publish
 	rm -fr build dist .egg records.egg-info
