@@ -12,7 +12,7 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 indent_style = space
-indent_size = 4
+indent_size = 2
 max_line_length = 80
 
 [{*.txt}]
@@ -31,5 +31,5 @@ trim_trailing_whitespace = false
 indent_style = space
 indent_size = 2
 
-[*.sql, *.sh]
+[*.sql, *ssh]
 max_line_length =

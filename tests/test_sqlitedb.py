@@ -1,10 +1,10 @@
 # coding: utf-8
-from __future__ import unicode_literals, print_function, absolute_import, with_statement
+from __future__ import absolute_import, print_function, unicode_literals, with_statement
 
-import os
-import unittest
 import datetime
 import logging
+import os
+import unittest
 
 from ezrecords.sqlitedb import SQLiteDb
 
@@ -19,7 +19,7 @@ class SQLiteDbTests(unittest.TestCase):
     self.db.show_sql = True
     self.db.show_errors = True
 
-    # Avoid using AUTOINCREMENT with SQLite. It imposses imposes extra CPU,
+    # Avoid using AUTOINCREMENT with SQLite. It imposes extra CPU,
     # memory, disk space, and disk I/O overhead. See https://sqlite.org/autoinc.html
     create_table = """
 CREATE TABLE test_user (
