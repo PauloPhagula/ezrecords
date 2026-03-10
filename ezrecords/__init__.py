@@ -12,7 +12,7 @@ ezrecords - SQL for Humans™ Enhanced.
 """
 
 __title__ = "ezrecords"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __author__ = "Paulo Phagula <pphagula@gmail.com>"
 __license__ = "MIT"
 __copyright__ = "Copyright 2026 Paulo Phagula"
