@@ -1,4 +1,4 @@
-include README.rst LICENSE CHANGELOG.md
+include README.rst LICENSE CHANGELOG.rst
 
 recursive-include tests *
 recursive-include docs *
