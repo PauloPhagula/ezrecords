@@ -49,3 +49,6 @@ exclude = ["tests*"]
 
 [tool.pytest.ini_options]
 addopts = "-ra -q --tb=line --testdox"
+
+[tool.ruff]
+indent-width = 2
