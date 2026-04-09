@@ -50,7 +50,7 @@ class Database(object):
     if not self.db_url:
       raise ValueError("You must provide a db_url.")
 
-    dsn_components = parse_db_url(db_url)
+    dsn_components = parse_db_url(self.db_url)
 
     self._dialect = dsn_components["dialect"]
     self._host = dsn_components["host"]
