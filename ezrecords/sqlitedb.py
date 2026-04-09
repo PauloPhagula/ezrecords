@@ -7,6 +7,7 @@ https://speakerdeck.com/eueung/python-sqlite
 """
 
 import sqlite3
+import datetime
 
 from ezrecords.abstractdb import Database
 
