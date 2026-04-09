@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ezrecords"
+version = "1.1.0"
+description = "SQL for Humans enhanced."
+readme = "README.rst"
+license = { text = "MIT" }
+authors = [{ name = "Paulo Phagula", email = "pphagula@gmail.com" }]
+keywords = ["database", "db", "helper", "utility", "sql"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Database",
+  "Topic :: Utilities",
+]
+requires-python = ">=3.11"
+dependencies = [
+  "tablib==3.9.0",
+  "munch==4.0.0",
+  "docopt==0.6.2",
+  "psycopg2==2.9.11",
+  "PyMySQL==1.1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/PauloPhagula/ezrecords"
+
+[project.scripts]
+ezrecords = "ezrecords.cli:cli"
+
+[dependency-groups]
+dev = [
+  "pytest==9.0.2",
+  "pytest-testdox==3.1.0",
+  "coverage",
+  "ruff>=0.15.5",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+addopts = "-ra -q --tb=line --testdox"
+
+[tool.ruff]
+indent-width = 2

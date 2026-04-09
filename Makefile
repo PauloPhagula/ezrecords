@@ -1,12 +1,15 @@
 .DEFAULT_GOAL := test
-.PHONY: test init publish
+.PHONY: test init publish docs
 
 test:
-	python -m pytest
+	uv run pytest
 init:
-	pip install -r requirements.txt
+	uv sync --locked
 publish:
-	python setup.py register
-	python setup.py sdist upload
-	python setup.py bdist_wheel --universal upload
+	uv build
+	uv publish
 	rm -fr build dist .egg records.egg-info
+docs:
+	cd _docs && $(MAKE) singlehtml
+	cp -fR _docs/_build/singlehtml/* docs/
+	cd ..
