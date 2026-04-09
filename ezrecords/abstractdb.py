@@ -544,7 +544,7 @@ class Database(object):
       conditions.append('"' + field + '" = ' + self._placeholder)
       values.append(value)
 
-    conditions = " AND".join(conditions)
+    conditions = " AND ".join(conditions)
 
     sql = 'DELETE FROM "%s" ' % table
     if conditions:
