@@ -41,6 +41,7 @@ dev = [
   "pytest==9.0.2",
   "pytest-testdox==3.1.0",
   "coverage",
+  "ruff>=0.15.5",
 ]
 
 [tool.setuptools.packages.find]
@@ -48,3 +49,6 @@ exclude = ["tests*"]
 
 [tool.pytest.ini_options]
 addopts = "-ra -q --tb=line --testdox"
+
+[tool.ruff]
+indent-width = 2
