@@ -18,7 +18,11 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: astral-sh/ruff-action@v3
+      - name: Checkout repo
+        uses: actions/checkout@v6
+  
+      - name: Lint
+        uses: astral-sh/ruff-action@v3
         with:
           version: "0.15.10"
           src: "./ezrecords"
@@ -62,7 +66,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
