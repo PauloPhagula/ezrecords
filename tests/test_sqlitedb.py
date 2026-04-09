@@ -8,7 +8,6 @@ import unittest
 
 from ezrecords.sqlitedb import SQLiteDb
 
-
 class SQLiteDbTests(unittest.TestCase):
   def setUp(self):
     dsn = "sqlite:///:memory:"
