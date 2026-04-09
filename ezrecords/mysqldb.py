@@ -90,7 +90,7 @@ class MySQLDb(Database):
     if len(modes) == 0:
       return
 
-    modes = map(lambda x: x.upper())
+    modes = map(lambda x: x.upper(), modes)
     modes_str = ", ".join(modes)
     self.query("SET SESSION sql_mode = %s", modes_str)
     self._sql_mode = modes_str
