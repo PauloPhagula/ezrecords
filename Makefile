@@ -1,6 +1,8 @@
 .DEFAULT_GOAL := test
-.PHONY: test init publish docs
+.PHONY: lint test init publish docs
 
+lint:
+	uv run ruff check
 test:
 	uv run pytest
 init:

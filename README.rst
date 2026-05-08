@@ -63,7 +63,7 @@ API
     logger = logging.getLogger()
 
     # connect
-    db = MySQLDb(db_url="mysql://root:passwd@127.0.0.1:3306/test", logger=logger) # logger is optional
+    db = MySQLDb(db_url="mysql://root:passwd@127.0.0.1:3306/test", logger=logger) # logger is optional
 
     # enable debugging - optional
     db.save_queries = True  # save queries and execution time
